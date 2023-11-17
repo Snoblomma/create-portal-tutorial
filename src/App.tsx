@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import MuiDrawer from '@mui/material/Drawer';
 import Box from '@mui/material/Box';
@@ -21,7 +21,7 @@ import { mainListItems, secondaryListItems } from './listItems';
 import Chart from './components/Chart';
 import Deposits from './components/Deposits';
 import Orders from './components/Orders';
-import { TutorialContext } from './context/TutorialProvider';
+import { TutorialContext } from './providers/TutorialProvider';
 import { useContext, useEffect } from 'react';
 import TutorialPopover from './components/TutorialPopover';
 
@@ -89,8 +89,6 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
-const defaultTheme = createTheme();
-
 function App() {
   const { toggleTutorial } = useContext(TutorialContext);
 
@@ -104,7 +102,7 @@ function App() {
   }, [])
 
   return (
-    <ThemeProvider theme={defaultTheme}>
+    <>
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
         <AppBar position="absolute" open={open}>
@@ -215,7 +213,7 @@ function App() {
         </Box>
       </Box>
       <TutorialPopover />
-    </ThemeProvider>
+    </>
   );
 }
 

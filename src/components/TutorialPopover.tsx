@@ -1,8 +1,8 @@
 import React, { useCallback, useContext, useState } from 'react'
-import { TutorialContext } from '../context/TutorialProvider';
+import { TutorialContext } from '../providers/TutorialProvider';
 import { Backdrop, Box, Button, Stack, Tooltip, Typography } from '@mui/material';
 import { createPortal } from 'react-dom';
-import useMutationObservable from '../hooks/useMutationObservable';
+import useMutationObserver from '../hooks/useMutationObserver';
 
 const TutorialPopover = () => {
     const { tutorialOpen, currentStep, onTutorialContinue } = useContext(TutorialContext);
@@ -15,7 +15,7 @@ const TutorialPopover = () => {
         [currentStep.elementId],
     )
 
-    useMutationObservable(document.body, onListMutation)
+    useMutationObserver(document.body, onListMutation)
 
     if (!tutorialOpen || !DOMReady) return null
 
@@ -42,7 +42,6 @@ const TutorialPopover = () => {
                     document.getElementById(currentStep.elementId) as Element
                 )
             }
-
         </Backdrop>
     )
 }
