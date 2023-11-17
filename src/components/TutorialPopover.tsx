@@ -37,7 +37,7 @@ const TutorialPopover = () => {
                             </Button>
                         </Stack>
                     }>
-                        <Box>Hello</Box>
+                        <Box></Box>
                     </Tooltip>,
                     document.getElementById(currentStep.elementId) as Element
                 )
